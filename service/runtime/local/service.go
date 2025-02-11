@@ -22,10 +22,10 @@ import (
 	"sync"
 	"time"
 
-	"micro.dev/v4/service/logger"
-	"micro.dev/v4/service/runtime"
-	"micro.dev/v4/service/runtime/local/process"
-	proc "micro.dev/v4/service/runtime/local/process/os"
+	"github.com/micro/micro/v5/service/logger"
+	"github.com/micro/micro/v5/service/runtime"
+	"github.com/micro/micro/v5/service/runtime/local/process"
+	proc "github.com/micro/micro/v5/service/runtime/local/process/os"
 )
 
 type service struct {
@@ -186,7 +186,7 @@ func (s *service) GetStatus() runtime.ServiceStatus {
 	return status
 }
 
-// Status updates the status of the service. Assumes it's called under a lock as it mutates state
+// SetStatus updates the status of the service. Assumes it's called under a lock as it mutates state
 func (s *service) SetStatus(status runtime.ServiceStatus, err error) {
 	s.stx.Lock()
 	defer s.stx.Unlock()
